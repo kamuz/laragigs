@@ -9,8 +9,9 @@ class ListingController extends Controller
 {
     // Show all listings
     public function index() {
+        // dd(request('tag'));
         return view('listings.index', [
-            'listings' => Listing::all(),
+            'listings' => Listing::where('tags', 'like', '%' . request('tag') . '%')->get(),
         ]);
     }
 
