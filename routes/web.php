@@ -5,7 +5,6 @@ use App\Models\Listing;
 
 Route::get('/', function () {
     return view('listings', [
-        'heading' => "Latest Listings",
         'listings' => Listing::all(),
     ]);
 });
