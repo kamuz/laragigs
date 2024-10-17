@@ -19,7 +19,7 @@ class ListingFactory extends Factory
     {
         return [
             'title' => fake()->jobTitle(),
-            'tags' => 'laravel, api, backend',
+            'tags' => implode(',', fake()->randomElements(['API', 'Laravel', 'Vue.js', 'PHP', 'JavaScript', 'MySQL', 'Django', 'React', 'Node.js', 'WordPress', 'Next.js'], rand(2,5))),
             'company' => fake()->company(),
             'email' => fake()->companyEmail(),
             'website' => fake()->url(),
