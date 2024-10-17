@@ -1,22 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Listing;
+use App\Http\Controllers\ListingController;
 
-Route::get('/', function () {
-    return view('listings', [
-        'listings' => Listing::all(),
-    ]);
-});
 
-Route::get('/listings/{id}', function($id){
-    $listing = Listing::find($id);
-    if ($listing){
-        return view('listing', [
-            'listing' => $listing
-        ]);
-    } else {
-        abort('404');
-    }
+Route::get('/', [ListingController::class, 'index']);
 
-});
+Route::get('/listings/{id}', [ListingController::class, 'show']);

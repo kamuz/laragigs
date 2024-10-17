@@ -41,4 +41,8 @@ lando artisan db:seed
 lando artisan migrate:refresh --seed
 ```
 
-01:41
+Створимо новий контролер:
+
+```
+lando artisan make:controller ListingController
+```
