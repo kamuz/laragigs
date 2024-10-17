@@ -13,14 +13,7 @@
                                 <a href="listings/{{$listing->id}}">{{$listing->title}}</a>
                             </h3>
                             <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
-                            <?php $tags = explode(',', $listing->tags); ?>
-                            <ul class="flex">
-                            @foreach($tags as $tag)
-                                <li class="bg-black text-white rounded-xl px-3 py-1 mr-2">
-                                    <a href="/?tag={{$tag}}">{{$tag}}</a>
-                                </li>
-                            @endforeach
-                            </ul>
+                            <x-listing-tags :listing="$listing" />
                             <div class="text-lg mt-4"><i class="fa-solid fa-location-dot"></i> {{$listing->location}}</div>
                         </div>
                     </div>

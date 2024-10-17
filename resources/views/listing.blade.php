@@ -7,14 +7,7 @@
                 <img class="w-48 mr-6 mb-6" src="{{asset('images/no-image.png')}}" alt="" />
                 <h3 class="text-2xl mb-2">{{$listing->title}}</h3>
                 <div class="text-xl font-bold mb-4">{{$listing->company}}</div>
-                <?php $tags = explode(',', $listing->tags); ?>
-                <ul class="flex">
-                @foreach($tags as $tag)
-                    <li class="bg-black text-white rounded-xl px-3 py-1 mr-2">
-                        <a href="/?tag={{$tag}}">{{$tag}}</a>
-                    </li>
-                @endforeach
-                </ul>
+                <x-listing-tags :listing="$listing" />
                 <div class="text-lg my-4">
                     <i class="fa-solid fa-location-dot"></i> {{$listing->location}}
                 </div>
