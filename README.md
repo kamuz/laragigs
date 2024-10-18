@@ -46,3 +46,17 @@ lando artisan migrate:refresh --seed
 ```
 lando artisan make:controller ListingController
 ```
+
+Ставимо розширення для Chrome Clockwork + пакет для Composer:
+
+```
+composer require itsgoingd/clockwork
+```
+
+Інколи для деяких локальних доменів, потрібно примусово активувати Clockwork в конфігі:
+
+*.env*
+
+```
+CLOCKWORK_ENABLE=true
+```

@@ -1,4 +1,4 @@
-<form action="">
+<form action="/">
     <div class="relative border-2 border-gray-100 m-4 rounded-lg">
         <div class="absolute top-4 left-3">
             <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
@@ -11,3 +11,9 @@
         </div>
     </div>
 </form>
+
+@if(!empty(request('search')))
+    <div class="mx-4">
+        <h1 class="text-3xl font-bold mb-4">Search results for: <?php echo request('search') ?></h1>
+    </div>
+@endif
