@@ -26,6 +26,11 @@
         </div>
         <div class="bg-gray-50 border border-gray-200 p-5 mt-5 rounded">
             <a href="/listings/{{$listing->id}}/edit"><i class="fa-solid fa-pencil"></i> Edit</a>
+            <form method="POST" action="/listings/{{$listing->id}}" class="inline-block float-right">
+                @csrf
+                @method('DELETE')
+                <button class="text-red-500"><i class="fa-solid fa-trash"></i> Delete</button>
+            </form>
         </div>
     </div>
 @endsection

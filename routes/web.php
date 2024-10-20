@@ -12,11 +12,14 @@ Route::get('/listings/create', [ListingController::class, 'create']);
 // Edit listing
 Route::get('/listings/{id}/edit', [ListingController::class, 'edit']);
 
-// Edit listing
+// Update listing
 Route::put('/listings/{id}', [ListingController::class, 'update']);
 
 // Store listing data
 Route::post('/listings/', [ListingController::class, 'store']);
+
+// Delete listing
+Route::delete('/listings/{id}', [ListingController::class, 'delete']);
 
 // Single listing
 Route::get('/listings/{id}', [ListingController::class, 'show']);
