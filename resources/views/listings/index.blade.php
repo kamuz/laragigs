@@ -3,9 +3,11 @@
     @include('partials/hero')
     @include('partials/search')
     @if(count($listings) == 0)
-        <p>No listings found</p>
+        <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+            <p>No listings found</p>
+        </div>
     @else
-    <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+        <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
             @foreach($listings as $listing)
                 <div class="bg-gray-50 border border-gray-200 rounded p-6">
                     <div class="flex">
@@ -21,7 +23,7 @@
                     </div>
                 </div>
             @endforeach
-        @endif
-    </div>
-    <div class="mt-6 p-4">{{$listings->links()}}</div>
+        </div>
+        <div class="mt-6 p-4">{{$listings->links()}}</div>
+    @endif
 @endsection
