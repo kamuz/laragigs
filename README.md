@@ -68,3 +68,9 @@ lando artisan vendor:publish
 ```
 
 Далі потрібно зробити виріб, що саме треба опублікувати, для пагінації вибираємо `Provider: Illuminate\Pagination\PaginationServiceProvider`.
+
+Робимо сиблінк на папку *storage/app/public/*:
+
+```
+lando artisan storage:link
+```
