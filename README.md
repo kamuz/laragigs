@@ -91,3 +91,14 @@ GET|HEAD  storage/{path} .............................................. storage.
 POST      users ................................................ UserController@store
 POST      users/authenticate ............................ UserController@authenticate
 ```
+
+Після внесених змін в міграції і моделі щодо відношення постів з відповідним користувачем, переходимо в tinker і шукаємо інформацію по посту і його користувачу:
+
+```
+lando artisan tinker
+\App\Models\Listing::first()
+\App\Models\Listing::find(3)
+\App\Models\Listing::find(3)->user
+$user = \App\Models\User::first()
+$user->listings
+```
