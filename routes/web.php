@@ -25,6 +25,9 @@ Route::delete('/listings/{id}', [ListingController::class, 'delete'])->middlewar
 // Single listing
 Route::get('/listings/{id}', [ListingController::class, 'show']);
 
+// Manager listings
+Route::get('/manage', [ListingController::class, 'manage'])->middleware('auth');
+
 // Show Register form
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 

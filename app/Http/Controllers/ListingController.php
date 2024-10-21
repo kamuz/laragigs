@@ -64,6 +64,11 @@ class ListingController extends Controller
 
         $listing = Listing::find($id);
 
+        // Make sure logged user is owner of current listing
+        if($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
         $formFields = $request->validate([
             'title' => 'required',
             'company' => 'required',
@@ -88,13 +93,33 @@ class ListingController extends Controller
     public function edit($id) {
         // dd(Listing::find($id));
         $listing = Listing::find($id);
+
+        // Make sure logged user is owner of current listing
+        if($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
         return view('listings.edit', ['listing' => $listing]);
     }
 
     // Delete listing
     public function delete($id) {
+
+        $listing = Listing::find($id);
+
+        // Make sure logged user is owner of current listing
+        if($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
         // dd(Listing::find($id));
         $listing = Listing::find($id)->delete();
+
         return redirect('/')->with('message', 'Listing was delete');
+    }
+
+    // Manager listings
+    public function manage(){
+        return view('listings.manage', ['listings' => auth()->user()->listings()->get()]);
     }
 }
