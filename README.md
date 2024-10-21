@@ -74,3 +74,20 @@ lando artisan vendor:publish
 ```
 lando artisan storage:link
 ```
+
+Дамо ім'я роуту, щоб вирішити питання з middleware, після чого матимемо приблизно такий список роутів:
+
+```
+POST      listings .......................................... ListingController@store
+GET|HEAD  listings/create .................................. ListingController@create
+PUT       listings/{id} .................................... ListingController@update
+DELETE    listings/{id} .................................... ListingController@delete
+GET|HEAD  listings/{id} ...................................... ListingController@show
+GET|HEAD  listings/{id}/edit ................................. ListingController@edit
+GET|HEAD  login ........................................ login › UserController@login
+POST      logout .............................................. UserController@logout
+GET|HEAD  register ............................................ UserController@create
+GET|HEAD  storage/{path} .............................................. storage.local
+POST      users ................................................ UserController@store
+POST      users/authenticate ............................ UserController@authenticate
+```
