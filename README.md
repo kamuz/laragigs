@@ -102,3 +102,31 @@ lando artisan tinker
 $user = \App\Models\User::first()
 $user->listings
 ```
+
+Після переносу на хостинг:
+
+```
+rm -rf public/storage
+php artisan storage:link
+```
+
+*.htaccess*
+
+```
+  <IfModule mod_rewrite.c>
+RewriteEngine on
+RewriteRule ^$ public/ [L]
+RewriteRule ((?s).*) public/$1 [L]
+</IfModule>
+```
+
+*public/.htaccess*
+
+```
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^((?s).*)$ index.php?_url=/$1 [QSA,L]
+</IfModule>
+```
