@@ -27,14 +27,14 @@ class UserController extends Controller
         $user = User::create($formFields);
 
         // Login
-        auth()->login($user);
+        auth()->guard()->login($user);
 
         return redirect('/')->with('message', 'User created and logged in');
     }
 
     // Logout user
     public function logout(Request $request) {
-        auth()->logout();
+        auth()->guard()->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
@@ -54,7 +54,7 @@ class UserController extends Controller
             'password' => ['required'],
         ]);
 
-        if(auth()->attempt($formFields)) {
+        if(auth()->guard()->attempt($formFields)) {
             $request->session()->regenerate();
             return redirect('/')->with('message', 'You are now login in');
         }

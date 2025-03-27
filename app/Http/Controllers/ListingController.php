@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Listing;
-use Illuminate\Support\Facades\DB;
+use Auth;
 
 class ListingController extends Controller
 {
@@ -51,7 +51,7 @@ class ListingController extends Controller
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
 
-        $formFields['user_id'] = auth()->id();
+        $formFields['user_id'] = auth()->guard()->id();
         // dd($formFields);
 
         Listing::create($formFields);
@@ -65,7 +65,7 @@ class ListingController extends Controller
         $listing = Listing::find($id);
 
         // Make sure logged user is owner of current listing
-        if($listing->user_id != auth()->id()) {
+        if($listing->user_id != auth()->guard()->id()) {
             abort(403, 'Unauthorized Action');
         }
 
@@ -95,7 +95,7 @@ class ListingController extends Controller
         $listing = Listing::find($id);
 
         // Make sure logged user is owner of current listing
-        if($listing->user_id != auth()->id()) {
+        if($listing->user_id != auth()->guard()->id()) {
             abort(403, 'Unauthorized Action');
         }
 
@@ -108,7 +108,7 @@ class ListingController extends Controller
         $listing = Listing::find($id);
 
         // Make sure logged user is owner of current listing
-        if($listing->user_id != auth()->id()) {
+        if($listing->user_id != auth()->guard()->id()) {
             abort(403, 'Unauthorized Action');
         }
 
@@ -120,6 +120,6 @@ class ListingController extends Controller
 
     // Manager listings
     public function manage(){
-        return view('listings.manage', ['listings' => auth()->user()->listings()->get()]);
+        return view('listings.manage', ['listings' => Auth::user()->listings()->get()]);
     }
 }
